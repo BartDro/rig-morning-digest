@@ -21,4 +21,24 @@ describe('digest page', () => {
     expect(html).toMatch(/<tr class="warn">[\s\S]*?fixtures\/refresh[\s\S]*?<\/tr>/);
     expect(html).toMatch(/<tr class="warn">[\s\S]*?notes\/backup[\s\S]*?<\/tr>/);
   });
+
+  it('returns JSON rows in the same job order as the page', async () => {
+    const app = createApp(config);
+    const [jsonResponse, pageResponse] = await Promise.all([
+      app.request('/api/digest/2026-10-28'),
+      app.request('/digest/2026-10-28'),
+    ]);
+    const rows = (await jsonResponse.json()) as Array<{ job: string }>;
+    const html = await pageResponse.text();
+    const pageJobs = [...html.matchAll(/<tr(?: class="[^"]*")?><td>([^<]*)<\/td>/g)].map(
+      (match) => match[1] ?? '',
+    );
+    const jsonJobs = rows.map((row) => row.job);
+
+    expect(jsonResponse.status).toBe(200);
+    expect(jsonResponse.headers.get('content-type')).toContain('application/json');
+    expect(pageResponse.status).toBe(200);
+    expect(jsonJobs).toEqual(pageJobs);
+    expect(jsonJobs).toEqual([...jsonJobs].sort((a, b) => a.localeCompare(b)));
+  });
 });
