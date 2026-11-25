@@ -1,8 +1,9 @@
 ---
 plan: morning-digest
-status: ready
+status: done
 owner: rook
 opened: 2026-10-29
+closed: 2026-11-25
 ---
 
 # Morning digest
@@ -77,3 +78,15 @@ page again with `LANE_MARKER` unset (the banner reads "no marker set") and uploa
 link. Move this plan to `docs/plans/done/` with its issue list.
 
 Done when: the preview link no longer shows the lane marker.
+
+## Issues
+
+| # | Issue | Blocked by | Worker | Closed |
+|---|-------|-----------|--------|--------|
+| 1 | [Read and aggregate nightly run logs](https://github.com/BartDro/rig-morning-digest/issues/1) | — | GitHub Copilot CLI · unknown · unknown | 2026-11-25 |
+| 2 | [Render /digest/:night](https://github.com/BartDro/rig-morning-digest/issues/2) | #1 | GitHub Copilot CLI · unknown · unknown | 2026-11-25 |
+| 3 | [Add /api/digest/:night JSON](https://github.com/BartDro/rig-morning-digest/issues/3) | #1 | GitHub Copilot CLI · unknown · unknown | 2026-11-25 |
+| 4 | [Link nights to digests on the status board](https://github.com/BartDro/rig-morning-digest/issues/4) | #1, #2 | GitHub Copilot CLI · unknown · unknown | 2026-11-25 |
+| 5 | [Test digest routes](https://github.com/BartDro/rig-morning-digest/issues/5) | #1, #2, #3 | GitHub Copilot CLI · unknown · unknown | 2026-11-25 |
+| 6 | [Publish digest preview for review](https://github.com/BartDro/rig-morning-digest/issues/6) | #1–#5 | GitHub Copilot CLI · unknown · unknown | 2026-11-25 |
+| 7 | [Remove preview marker and archive the plan](https://github.com/BartDro/rig-morning-digest/issues/7) | #6 | GitHub Copilot CLI · unknown · unknown | 2026-11-25 |
